@@ -8,6 +8,7 @@ djangorestframework==3.11.0
 djangorestframework-simplejwt==4.4.0
 drf-yasg==1.17.1
 Faker==4.1.0
+gunicorn==20.0.4
 idna==2.9
 inflection==0.4.0
 itypes==1.2.0
