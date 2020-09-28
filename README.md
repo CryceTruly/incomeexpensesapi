@@ -6,7 +6,7 @@ Income Expenses API
 
 2. Clone the repository
 3. create a virtual environment using `virtualenv venv`
-4. Activate the virtual environment by running `cd venv/bin/activate`
+4. Activate the virtual environment by running `cd venv/bin/activate` source env/bin/activate  # On Windows use `env\Scripts\activate`
 
 5. Install the dependencies using `pip install -r requirements.txt`
 
