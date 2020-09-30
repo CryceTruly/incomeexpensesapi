@@ -90,7 +90,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
 
-        email = request.data['email']
+        email = request.data.get('email', '')
 
         if User.objects.filter(email=email).exists():
             user = User.objects.get(email=email)

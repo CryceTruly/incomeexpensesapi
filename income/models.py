@@ -21,8 +21,11 @@ class Income(models.Model):
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
     date = models.DateField(null=False, blank=False)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     class Meta:
-        ordering: ['-date']
+        ordering: ['-updated_at']
 
     def __str__(self):
         return str(self.owner)+'s income'
