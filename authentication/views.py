@@ -90,7 +90,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
 
-        email = request.data['email']
+        email = request.data.get('email', '')
 
         if User.objects.filter(email=email).exists():
             user = User.objects.get(email=email)
@@ -129,7 +129,7 @@ class PasswordTokenCheckAPI(generics.GenericAPIView):
                     return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
 
             if redirect_url and len(redirect_url) > 3:
-                return CustomRedirect(redirect_url+'?token_valid=True&?message=Credentials Valid&?uidb64='+uidb64+'&?token='+token)
+                return CustomRedirect(redirect_url+'?token_valid=True&message=Credentials Valid&uidb64='+uidb64+'&token='+token)
             else:
                 return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
 
