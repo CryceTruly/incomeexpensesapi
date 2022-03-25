@@ -53,9 +53,12 @@ class LoginSerializer(serializers.ModelSerializer):
     def get_tokens(self, obj):
         user = User.objects.get(email=obj['email'])
 
+        
+        token =  RefreshToken.for_user(user)
+
         return {
-            'refresh': user.tokens()['refresh'],
-            'access': user.tokens()['access']
+            'refresh':  str(token),
+            'access' :  str(token.access_token)
         }
 
     class Meta:
